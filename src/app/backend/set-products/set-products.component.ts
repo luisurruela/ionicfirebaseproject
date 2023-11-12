@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-set-products',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetProductsComponent  implements OnInit {
 
-  constructor() { }
+  constructor(
+    private menuController: MenuController
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+  
+  openMenu() {
+    this.menuController.toggle('main');
+  }
+
+  save() {
+    console.log('saving...');
+  }
 
 }
