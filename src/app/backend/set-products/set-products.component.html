@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Set Products</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="px-3">
+    <h3 class="p-3 text-bg-light text-bold header-md text-center border-radius">Ingrese datos del producto</h3>
+  </div>
+  
+  <ion-item>
+    <ion-input label="Nombre:" type="text" inputmode="text" labelPlacement="floating"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Precio Normal:" type="number" inputmode="numeric" labelPlacement="floating"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Precio reducido:" type="number" inputmode="numeric" labelPlacement="floating"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Foto:</ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="images"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <ion-button (click)="save()" expand="full" color="dark" shape="square" class="p-4">
+    Guardar
+  </ion-button>
+</ion-content>
