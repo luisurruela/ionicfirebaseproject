@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-set-products',
@@ -9,7 +10,8 @@ import { MenuController } from '@ionic/angular';
 export class SetProductsComponent  implements OnInit {
 
   constructor(
-    private menuController: MenuController
+    private menuController: MenuController,
+    private firestore: FirestoreService
   ) { }
 
   ngOnInit() { }
@@ -20,6 +22,7 @@ export class SetProductsComponent  implements OnInit {
 
   save() {
     console.log('saving...');
+    this.firestore.create();
   }
 
 }

@@ -8,11 +8,16 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { BackendModule } from './backend/backend.module';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     BackendModule,
     BrowserModule,
     PagesModule,
