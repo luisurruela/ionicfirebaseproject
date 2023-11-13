@@ -10,29 +10,56 @@
 </ion-header>
 
 <ion-content>
+
+  <div class="m-3 d-flex justify-content-end" *ngIf="!newForm">
+    <ion-button (click)="createNewProduct()" color="dark">
+      <ion-icon slot="start" name="add-circle-outline"></ion-icon> Nuevo
+    </ion-button>
+  </div>
+  
+  <div class="m-3 d-flex justify-content-end" *ngIf="newForm">
+    <ion-button (click)="newForm = false" color="dark">
+      <ion-icon slot="start" name="close-circle-outline"></ion-icon> Cerrar
+    </ion-button>
+  </div>
+
   <div class="px-3">
     <h3 class="p-3 text-bg-light text-bold header-md text-center border-radius">Ingrese datos del producto</h3>
   </div>
   
-  <ion-item>
-    <ion-input label="Nombre:" type="text" inputmode="text" labelPlacement="floating"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Precio Normal:" type="number" inputmode="numeric" labelPlacement="floating"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Precio reducido:" type="number" inputmode="numeric" labelPlacement="floating"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Foto:</ion-label>
+  <div *ngIf="newForm">
+    <ion-item>
+      <ion-input label="Nombre:" [(ngModel)]="newProduct.name" type="text" inputmode="text" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Precio Normal:" [(ngModel)]="newProduct.regularPrice" type="number" inputmode="numeric" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Precio reducido:" [(ngModel)]="newProduct.lowerPrice" type="number" inputmode="numeric" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Foto:</ion-label>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="images"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  
+    <ion-button (click)="save()" expand="full" color="dark" shape="square" class="p-4">
+      Guardar
+    </ion-button>
+  </div>
+
+  <ion-item *ngFor="let product of products">
+    <ion-label>{{ product.name }}</ion-label>
     <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="images"></ion-icon>
+      <ion-button (click)="newProduct = product; newForm = true">
+        <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+      </ion-button>
+      <ion-button (click)="delete(product)">
+        <ion-icon slot="icon-only" name="trash-bin"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-item>
-
-  <ion-button (click)="save()" expand="full" color="dark" shape="square" class="p-4">
-    Guardar
-  </ion-button>
 </ion-content>
