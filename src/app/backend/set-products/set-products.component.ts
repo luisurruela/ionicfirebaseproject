@@ -55,4 +55,17 @@ export class SetProductsComponent  implements OnInit {
     this.firestore.delete(this.path, product.id);
   }
 
+  uploadImage(event: any) {
+    console.log(event);
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = ((image) => {
+        console.log(image);
+        this.newProduct.photo = image.target!.result as string;
+        console.log(this.newProduct.photo);
+      });
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
 }
